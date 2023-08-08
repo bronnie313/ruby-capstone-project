@@ -1,16 +1,18 @@
 class Genre
-    attr_reader: name
+  attr_reader :name :item
 
-    private 
-    attr_reader :id, :items
+  private
 
-    def initialize(id, name )
-        @id = id
-        @name = name 
-        @items = []
-    end
+  attr_reader :id, :items
 
-    def add_item(item)
-        @items << item
-    end
+  def initialize(id, name)
+    @id = id
+    @name = name
+    @items = []
+  end
+
+  def add_item(item)
+    @items << item
+    item.genre = self
+  end
 end
