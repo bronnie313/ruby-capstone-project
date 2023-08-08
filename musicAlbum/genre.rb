@@ -1,5 +1,5 @@
 class Genre
-  attr_reader :name :item
+  attr_reader :name, :item
 
   private
 
