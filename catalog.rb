@@ -6,6 +6,7 @@ class Music
     def start
         puts 'Catalog of my things'
         @display = Display.new
+        @app_instance = App.new
          
         trap('INT') do
             puts "\nExited the application unExpectedly please try again"
@@ -19,11 +20,11 @@ class Music
 
             case choice
             when 2
-                list_all_music_albums
+                @app_instance.list_all_music_albums
             when 4
-                list_all_genres
+                @app_instance.list_all_genres
             when 8
-                add_music_album
+                @app_instance.add_music_album
             when 10
                 puts 'Thank you for using this application'
                 break

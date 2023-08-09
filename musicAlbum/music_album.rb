@@ -1,10 +1,12 @@
 require_relative '../item'
 
 class MusicAlbum < Item
-  attr_reader :on_spotify, 
+  attr_reader :name, :genre, :publish_date 
+  attr_accessor :on_spotify 
 
   def initialize(name, publish_date, genre, on_spotify: true)
-    super(name, publish_date, genre)
+    super(rand(1..100), publish_date, genre, nil, nil, nil)
+    @name = name
     @on_spotify = on_spotify
   end
 
