@@ -3,10 +3,9 @@ class Genre
 
   private
 
-  attr_reader :id, :items
+  attr_reader :items
 
-  def initialize(id, name)
-    @id = id
+  def initialize(name)
     @name = name
     @items = []
   end

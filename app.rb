@@ -16,8 +16,8 @@ class App
     
     def list_all_genres
         puts 'List of Music Genres:'
-        @music_albums.each do |album|
-            puts "- '#{album.genre}'"
+        @genres.each do |genre|
+            puts "- '#{genre.name}'"
         end
     end
 
@@ -33,9 +33,16 @@ class App
         on_spotify = gets.chomp.downcase == 'y'
 
         puts 'Enter the genre of the music album:'
-        genre = gets.chomp.capitalize
+        genre_name = gets.chomp.capitalize
+
+        genre = @genres.find { |g| g.name == genre_name }
+        unless genre
+            genre = Genre.new(genre_name)
+            @genres << genre
+        end
+
         album = MusicAlbum.new(name, publish_date, genre)
-        @music_albums.push(album)
+        @music_albums << album
         puts 'Music album has been added successfully'
     end
 end
