@@ -1,11 +1,8 @@
 require 'date'
 
 class Item
-  # attr_reader :genre, :author, :source, :label, :publish_date
-  # attr_accessor :archived
   attr_reader :id, :genre, :author, :source, :label, :publish_date, :archived
 
-  # def initialize(genre, author, label, publish_date, id = Random.rand(1..10_000))
   def initialize(id = Random.rand(1..10_000))
     @id = id
     @genre = genre
@@ -35,6 +32,7 @@ class Item
     current_year = Time.now.year
     publish_date = Date.parse(@publish_date)
     age_in_years = current_year - publish_date.year
+
     age_in_years > 10
   end
 

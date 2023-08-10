@@ -1,6 +1,7 @@
 require_relative 'app'
+require_relative 'catalog'
 
-def app_options(app)
+def app_options(app, catalog)
   puts 'Please select an option:'
   puts '1. option for books'
   puts '2. option for music'
@@ -13,7 +14,8 @@ def app_options(app)
   case choice
   when 1
     app.display_options(app)
-
+  when 2
+    catalog.start
   when 4
     exit
   end
@@ -22,9 +24,10 @@ end
 def main
   app = App.new
   app.load_data
+  catalog = Music.new
   puts 'Welcome to our catalog app'
   loop do
-    app_options(app)
+    app_options(app, catalog)
   end
 ensure
   app.save_data
