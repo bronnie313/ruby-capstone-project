@@ -2,7 +2,7 @@ class Item
   attr_reader :genre, :author, :source, :label, :publish_date
   attr_accessor :id, :archived
 
-  def initialize(id, publish_date,  genre, author, source, label)
+  def initialize(_id, publish_date, genre, author, source, label)
     @id = rand(1..1000)
     @genre = genre
     @author = author
@@ -14,7 +14,7 @@ class Item
 
   def can_be_archived?
     current_year = Time.now.current_year
-    publish_date = @publish_date.year 
+    publish_date = @publish_date.year
     age_in_years = current_year - publish_date
     age_in_years > 10
   end
