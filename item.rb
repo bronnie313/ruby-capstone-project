@@ -1,19 +1,8 @@
-
-class Item
-  attr_reader :genre, :author, :source, :label, :publish_date
-  attr_accessor :id, :archived
-
-  def initialize(_id, publish_date, genre, author, source, label)
-    @id = rand(1..1000)
-
 require 'date'
 
 class Item
-  # attr_reader :genre, :author, :source, :label, :publish_date
-  # attr_accessor :archived
   attr_reader :id, :genre, :author, :source, :label, :publish_date, :archived
 
-  # def initialize(genre, author, label, publish_date, id = Random.rand(1..10_000))
   def initialize(id = Random.rand(1..10_000))
     @id = id
     @genre = genre
@@ -23,12 +12,6 @@ class Item
     @publish_date = publish_date
     @archived = false
   end
-
-
-  def can_be_archived?
-    current_year = Time.now.current_year
-    publish_date = @publish_date.year
-    age_in_years = current_year - publish_date
 
   def add_label=(label)
     @label = label

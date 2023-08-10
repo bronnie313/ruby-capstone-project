@@ -1,10 +1,16 @@
-
 require 'json'
 require_relative 'musicAlbum/genre'
 require_relative 'musicAlbum/music_album'
+require_relative 'book'
+require_relative 'item'
+require_relative 'label'
+require_relative 'add_book'
 
 class App
+  attr_accessor :books, :labels
+
   def initialize
+    @books = AddBook.new
     @music_albums = []
     @genres = []
   end
@@ -71,18 +77,6 @@ class App
     end
 
     puts 'Data has been loaded from JSON files.'
-
-require_relative 'book'
-require_relative 'item'
-require_relative 'label'
-require_relative 'add_book'
-require 'json'
-
-class App
-  attr_accessor :books, :labels
-
-  def initialize
-    @books = AddBook.new
   end
 
   def save_data

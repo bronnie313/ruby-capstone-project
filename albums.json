@@ -1,12 +1,27 @@
 [
   {
-    "name": "king brone",
+    "name": null,
     "publish_date": "2020/02/01",
     "genre": "Pop"
   },
   {
-    "name": "king nickpad",
+    "name": null,
     "publish_date": "2010/10/03",
     "genre": "Lingala"
+  },
+  {
+    "name": null,
+    "publish_date": "2020/10/12",
+    "genre": "Gospel"
+  },
+  {
+    "name": null,
+    "publish_date": "2021/02/06",
+    "genre": "Pop & jazz"
+  },
+  {
+    "name": null,
+    "publish_date": "2019/12/12",
+    "genre": "Gospel"
   }
 ]
