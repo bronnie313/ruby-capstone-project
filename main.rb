@@ -16,6 +16,8 @@ def app_options(app, catalog)
     app.display_options(app)
   when 2
     catalog.start
+  when 3
+    app.display_game_author_options(app)
   when 4
     exit
   end

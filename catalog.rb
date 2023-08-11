@@ -28,6 +28,12 @@ class Music
         @app_instance.list_all_genres
       when 3
         @app_instance.add_music_album
+      # when 4
+      #   @app_instance.display_games
+      # when 5
+      #   @app_instance.display_authors
+      # when 6
+      #   @app_instance.add_game
       when 7
         puts 'Thank you for using this application Saving data...'
         @app_instance.save_data_to_files
