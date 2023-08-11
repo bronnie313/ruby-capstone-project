@@ -1,11 +1,11 @@
-require 'json'
-require_relative 'item'
-
 class Author
-  attr_reader :name, :items
+  attr_accessor :firstname, :lastname, :items
+  attr_reader :id
 
-  def initialize(name)
-    @name = name
+  def initialize(firstname, lastname)
+    @id = rand(1...1000)
+    @firstname = firstname
+    @lastname = lastname
     @items = []
   end
 
@@ -14,21 +14,12 @@ class Author
     item.author = self
   end
 
-  def to_json(*args)
+  def to_hash
     {
-      'json_class' => self.class.name,
-      'data' => {
-        'name' => @name,
-        'items' => @items
-      }
-    }.to_json(*args)
-  end
-
-  def self.json_create(object)
-    author = new(object['data']['name'])
-    object['data']['items'].each do |item|
-      author.add_item(item)
-    end
-    author
+      id: @id,
+      firstname: @firstname,
+      lastname: @lastname,
+      items: @items.map(&:to_hash)
+    }
   end
 end
