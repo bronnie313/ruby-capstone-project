@@ -26,7 +26,7 @@ class GameConsole
   def save_games
     games = @games.each_with_index.map do |game, index|
       {
-        Title: game.title, published_date: game.published_date, multy_player: game.multiplayer, index: index
+        title: game.title, published_date: game.published_date, multy_player: game.multiplayer, index: index
       }
     end
     File.write('games.json', JSON.generate(games))
@@ -39,7 +39,7 @@ class GameConsole
     json = JSON.parse(read_file)
 
     loaded_games = json.map do |game|
-      Game.new(game['title'], game['multiplayer'], game['last_played_at'], game['publish_date'])
+      Game.new(game['title'], game['multiplayer'], game['last_played_at'], game['published_date'])
     end
     @games = loaded_games
   end
