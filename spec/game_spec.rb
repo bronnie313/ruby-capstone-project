@@ -5,7 +5,7 @@ require 'date'
 RSpec.describe Game do
   let(:last_played_at) { Date.today.prev_year(1).to_s }
   let(:published_date) { Date.today.prev_year(2).to_s }
-  let(:game) { Game.new(true, last_played_at, published_date) }
+  let(:game) { Game.new('Title', true, last_played_at, published_date) }
 
   describe '#initialize' do
     it 'sets the last_played_at attribute' do
@@ -29,6 +29,10 @@ RSpec.describe Game do
     context 'when the parent class can be archived' do
       before do
         allow(game).to receive(:super).and_return(true)
+      end
+
+      it 'returns true' do
+        expect(game.can_be_archived?).to be_truthy
       end
     end
   end

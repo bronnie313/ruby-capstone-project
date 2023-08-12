@@ -1,6 +1,8 @@
+require_relative 'item'
+
 class Author
-  attr_accessor :firstname, :lastname, :items
-  attr_reader :id
+  attr_accessor :firstname, :lastname
+  attr_reader :items
 
   def initialize(firstname, lastname)
     @id = rand(1...1000)
@@ -10,16 +12,7 @@ class Author
   end
 
   def add_item(item)
-    @items << item
-    item.author = self
-  end
-
-  def to_hash
-    {
-      id: @id,
-      firstname: @firstname,
-      lastname: @lastname,
-      items: @items.map(&:to_hash)
-    }
+    @items.push(item) unless @items.include?(item)
+    item.add_author = self
   end
 end
