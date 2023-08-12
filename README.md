@@ -19,6 +19,9 @@ In this project, we create a console app that will help users to keep record of 
 - [💻 Getting Started](#getting-started)
   - [Prerequisites](#prerequisites)
   - [Setup](#setup)
+  - [Install](#install)
+  - [Usage](#usage)
+  - [Run tests](#run-tests)
 - [👥 Authors](#authors)
 - [🔭 Future Features](#future-features)
 - [🤝 Contributing](#contributing)
@@ -71,19 +74,52 @@ Is a simple console app that allow users to manage collections of the things the
 
 To get a local copy of this project up and running, follow these steps.
 
-- ### Prerequisites
+  ### Prerequisites
 
   - In order to run this project locally you need `git` installed. Please got to [Getting Started - Installing Git guide](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git) and follow the steps described for your system to install `git`.
   - Also you must have `Ruby` installed, you can go to the [Installing Ruby](https://www.ruby-lang.org/en/documentation/installation/) documentation and follow the steps for your computer OS.
 
-- ### Setup
+  ### Setup
 
   Clone this repository to your desired folder:
+  ` sh git clone https://github.com/bronnie313/ruby-capstone-project.git `
+  ### Install
 
-  ```sh
-  git clone https://github.com/bronnie313/ruby-capstone-project.git
+Install this project with: ` cd ruby-capstone-project  `
+` gem install `
 
-  ```
+<!--
+Example command:
+
+```sh
+  cd my-project
+  gem install
+```
+--->
+
+### Usage
+
+To run the project, execute the following command:` ruby filename.rb `
+
+<!--
+Example command:
+
+```sh
+  rails server
+```
+--->
+
+### Run tests
+
+To run tests, run the following command: ` gem install rspec ` ` rspec filenam.rb `
+
+<!--
+Example command:
+
+```sh
+  bin/rails test test/models/article_test.rb
+```
+--->
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
