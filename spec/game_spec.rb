@@ -1,39 +1,42 @@
-require_relative '../item'
+require_relative '../game_console'
 require_relative '../game'
-require 'date'
+require_relative '../author'
 
-RSpec.describe Game do
-  let(:last_played_at) { Date.today.prev_year(1).to_s }
-  let(:published_date) { Date.today.prev_year(2).to_s }
-  let(:game) { Game.new('Title', true, last_played_at, published_date) }
+RSpec.describe GameConsole do
+  let(:console) { GameConsole.new }
 
-  describe '#initialize' do
-    it 'sets the last_played_at attribute' do
-      expect(game.last_played_at).to eq(last_played_at)
+  describe '#display_games' do
+    it 'displays games' do
+      game1 = Game.new('Game 1', true, '2023/01/01', '2022/01/01')
+      game2 = Game.new('Game 2', false, '2023/01/01', '2022/01/01')
+      console.instance_variable_get(:@games).push(game1, game2)
+      expect { console.display_games }.to output(/Game 1.*Game 2/m).to_stdout
     end
 
-    it 'sets the published_date attribute' do
-      expect(game.published_date).to eq(published_date)
+    it 'displays no games message' do
+      console.instance_variable_set(:@games, [])
+      expect { console.display_games }.to output(/No games/).to_stdout
     end
   end
+end
 
-  describe '#can_be_archived?' do
-    context 'when the last_played_at is within the last two years' do
-      let(:last_played_at) { Date.today.prev_year(1).to_s }
+RSpec.describe Author do
+  describe '#add_item' do
+    it 'adds item to author' do
+      author = Author.new('John', 'Doe')
+      game = Game.new('Game', true, '2023/01/01', '2022/01/01')
+
+      author.add_item(game)
+      expect(author.items).to include(game)
     end
 
-    context 'when the last_played_at is more than two years ago' do
-      let(:last_played_at) { (Date.today - (365 * 2) - 1).to_s }
-    end
+    it 'does not add duplicate items' do
+      author = Author.new('John', 'Doe')
+      game = Game.new('Game', true, '2023/01/01', '2022/01/01')
 
-    context 'when the parent class can be archived' do
-      before do
-        allow(game).to receive(:super).and_return(true)
-      end
-
-      it 'returns true' do
-        expect(game.can_be_archived?).to be_truthy
-      end
+      author.add_item(game)
+      author.add_item(game)
+      expect(author.items.size).to eq(1)
     end
   end
 end
