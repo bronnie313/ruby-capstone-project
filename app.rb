@@ -5,12 +5,16 @@ require_relative 'book'
 require_relative 'item'
 require_relative 'label'
 require_relative 'add_book'
+require_relative 'game'
+require_relative 'author'
+require_relative 'game_console'
 
 class App
-  attr_accessor :books, :labels
+  attr_accessor :books, :labels, :games, :authors
 
   def initialize
     @books = AddBook.new
+    @games = GameConsole.new
     @music_albums = []
     @genres = []
   end
@@ -82,14 +86,18 @@ class App
   def save_data
     @books.save_books
     @books.save_labels
+    @games.save_games
+    @games.save_authors
   end
 
   def load_data
     @books.load_books
     @books.load_labels
+    @games.load_games
+    @games.load_authors
   end
 
-  def display_options(app)
+  def display_options
     loop do
       puts 'Welcome! Please choose an option for books:'
       puts '1. List all books'
@@ -107,7 +115,30 @@ class App
         books.add_book
       when 4
         save_data
-        app_options(app)
+        return
+      end
+    end
+  end
+
+  def display_game_author_options
+    loop do
+      puts 'Welcome! Please choose an option for games and authors:'
+      puts '1. List all games'
+      puts '2. List all authors'
+      puts '3. Add a game'
+      puts '4. Exit'
+      choice = gets.chomp.to_i
+
+      case choice
+      when 1
+        games.display_games
+      when 2
+        games.display_authors
+      when 3
+        games.add_game
+      when 4
+        save_data
+        return
       end
     end
   end
