@@ -22,13 +22,13 @@ class Game < Item
       title: @title,
       multiplayer: @multiplayer,
       last_played_at: @last_played_at,
-      publish_date: @publish_date,
+      published_date: @published_date,
       author_ids: @authors.map(&:id)
     }
   end
 
   def self.json_create(object)
-    new(object['title'], object['multiplayer'], object['last_played_at'], object['publish_date'], object['authors'])
+    new(object['title'], object['multiplayer'], object['last_played_at'], object['published_date'], object['authors'])
   end
 
   def add_authors(authors)

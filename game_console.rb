@@ -26,7 +26,7 @@ class GameConsole
   def save_games
     games = @games.each_with_index.map do |game, index|
       {
-        title: game.title, published_date: game.published_date, multy_player: game.multiplayer, index: index
+        title: game.title, published_date: game.published_date, multiplayer: game.multiplayer, index: index
       }
     end
     File.write('games.json', JSON.generate(games))
@@ -91,12 +91,12 @@ class GameConsole
     puts 'Please nter date of the last play (YYYY/MM/DD):'
     last_played_at = gets.chomp
     puts 'Enter game\'s publish date (YYYY/MM/DD):'
-    publish_date = gets.chomp
+    published_date = gets.chomp
     puts 'Please enter author first name:'
     first_name = gets.chomp
     puts 'Please enter author last name:'
     last_name = gets.chomp
-    game = Game.new(title, multiplayer, last_played_at, publish_date, [])
+    game = Game.new(title, multiplayer, last_played_at, published_date, [])
     @games.push(game)
     author = Author.new(first_name, last_name)
     @authors.push(author)
