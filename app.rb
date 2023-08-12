@@ -55,6 +55,7 @@ class App
 
     album = MusicAlbum.new(name, publish_date, genre)
     @music_albums << album
+    save_data_to_files
     puts 'Music album has been added successfully'
   end
 

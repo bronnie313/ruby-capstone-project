@@ -7,8 +7,6 @@ def main
   catalog = Music.new
 
   app.load_data
-  app.load_data_from_files
-  catalog.load_data_from_files
 
   puts 'Welcome to our catalog app'
   loop do
@@ -29,14 +27,12 @@ def main
     when 3
       app.display_game_author_options
     when 4
+      # app.save_data_to_files
       break
     end
   end
 
   app.save_data
-  app.save_data_to_files
-  catalog.save_data_to_files
-  # console.save_data
 end
 
 main

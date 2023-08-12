@@ -37,37 +37,6 @@ class Music
       end
     end
   end
-
-  def load_data_from_files
-    if File.exist?('albums.json') && File.size?('albums.json').to_i.positive?
-      albums_data = JSON.parse(File.read('albums.json'))
-      @music_albums = albums_data.map { |data| MusicAlbum.from_hash(data) }
-    end
-
-    if File.exist?('genres.json') && File.size?('genres.json').to_i.positive?
-      genres_data = JSON.parse(File.read('genres.json'))
-      @genres = genres_data.map { |data| Genre.from_hash(data) }
-    end
-
-    puts 'Data has been loaded from JSON files.'
-  end
-
-  def save_data_to_files
-    save_music_albums_to_file
-    save_genres_to_file
-  end
-
-  def save_music_albums_to_file
-    albums_data = @music_albums.map(&:to_hash)
-    File.write('albums.json', JSON.pretty_generate(albums_data))
-    puts 'Music albums data has been saved to JSON file.'
-  end
-
-  def save_genres_to_file
-    genres_data = @genres.map(&:to_hash)
-    File.write('genres.json', JSON.pretty_generate(genres_data))
-    puts 'Genres data has been saved to JSON file.'
-  end
 end
 
 class Display
